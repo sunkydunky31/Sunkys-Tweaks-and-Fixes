@@ -1,0 +1,31 @@
+{
+	"Lang Codes": {
+		"prefix": "(S1F) Lang Codes Setup",
+		"body": [
+			"public alias 0: LANG_ENGLISH",
+			"public alias 1: LANG_PORTUGUESE",
+			"public alias 2: LANG_SPANISH",
+			"public alias 3: LANG_FRENCH",
+			"public alias 4: LANG_GERMAN"
+		],
+		"description": "Lang Codes for Language in S1F, use this on a main script"
+	},
+	
+	"Lang Codes RSDK": {
+		"prefix": "(v4) Lang Codes Setup",
+		"body": [
+			"public alias 0: RSDK_LANG_ENGLISH",
+			"public alias 1: RSDK_LANG_FRENCH",
+			"public alias 2: RSDK_LANG_ITALIAN",
+			"public alias 3: RSDK_LANG_GERMAN",
+			"public alias 4: RSDK_LANG_SPANISH",
+			"public alias 5: RSDK_LANG_JAPANESE",
+			"public alias 6: RSDK_LANG_PORTUGUESE",
+			"public alias 7: RSDK_LANG_RUSSIAN",
+			"public alias 8: RSDK_LANG_KOREAN",
+			"public alias 9: RSDK_LANG_ZH",
+			"public alias 10: RSDK_LANG_ZS"
+		],
+		"description": "Lang Codes for Language in RSDKv4, use this in a main script"
+	}
+}
