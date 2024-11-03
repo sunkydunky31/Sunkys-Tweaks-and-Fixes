@@ -22,7 +22,7 @@ private alias object.value0 : fade.control
 private alias object.value1 : char.select
 private alias object.value2 : bg.scroll
 private alias object.value3 : touch.inputReset
-
+private alias object.value4 : hold.time
 
 private alias object.value6 : arrow.flash
 private alias 10 : num.holes
@@ -51,7 +51,41 @@ private table golfstars
 	6, 4, 1
 end table
 
-
+function menu.holdmovement
+		if inputDown.up == 1
+			hold.time++
+			if hold.time >= 20
+				inputPress.up = 1
+				hold.time = 12
+			end if
+		else	
+			if inputDown.down == 1
+				hold.time++
+				if hold.time >= 20
+					inputPress.down = 1
+					hold.time = 12
+				end if
+			else
+				if inputDown.right == 1
+					hold.time++
+					if hold.time >= 20
+						inputPress.right = 1
+						hold.time = 12
+					end if		
+				else
+					if inputDown.left == 1
+						hold.time++
+						if hold.time >= 20
+							inputPress.left = 1
+							hold.time = 12
+						end if		
+					else
+						hold.time = 0
+					end if
+				end if
+			end if
+		end if
+end function 
 
 event ObjectMain
 		if saved.mobile == 1
@@ -60,6 +94,7 @@ event ObjectMain
 				touch.inputReset = false
 			end if
 		end if
+		CallFunction(menu.holdmovement)
 		
 		switch object.state
 		case 2 //Character Select
@@ -157,7 +192,7 @@ event ObjectDraw
 		//Fade in/out
 		case 0
 			fade.control = 255
-			SetScreenFade(0, 0, 0, fade.control)
+			SetClassicFade(0, 0, 0, fade.control)
 			object.state++
 			break
 		case 1
@@ -167,7 +202,7 @@ event ObjectDraw
 				object.state++
 				PlayMusic(0)
 			end if
-			SetScreenFade(0, 0, 0, fade.control)
+			SetClassicFade(0, 0, 0, fade.control)
 			break
 		case 2 //Character Select
 		case 3 //Waiting to Start
@@ -181,10 +216,10 @@ event ObjectDraw
 			else
 				StopMusic()
 				stage.activeList = PRESENTATION_STAGE
-				stage.listPos = 6
+				stage.listPos = StageName[P - MAIN MENU]
 				LoadStage()
 			end if
-			SetScreenFade(0, 0, 0, fade.control)
+			SetClassicFade(0, 0, 0, fade.control)
 			break
 		case 5 //Fade out to Green Hill
 			if fade.control < 320
@@ -193,7 +228,7 @@ event ObjectDraw
 			else
 				StopMusic()
 					stage.activeList = BONUS_STAGE
-					stage.listPos = 1
+					stage.listPos = StageName[B - GREEN HILL ZONE]
 					options.gameMode = 5
 					stage.debugMode = 0
 					if char.select == 3
@@ -203,7 +238,7 @@ event ObjectDraw
 					end if
 				LoadStage()
 			end if
-			SetScreenFade(0, 0, 0, fade.control)
+			SetClassicFade(0, 0, 0, fade.control)
 			break
 		end switch
 		
@@ -404,7 +439,7 @@ event ObjectStartup
 
 	SpriteFrame(-32, 0, 32, 19, 1, 387) //30 Scoreboard Ender
 	switch saved.language
-	case LANG_ENGLISH
+	default
 		SpriteFrame(17, -85, 155, 56, 1, 431) //31 Skill Meter
 		break
 	case LANG_PORTUGUESE

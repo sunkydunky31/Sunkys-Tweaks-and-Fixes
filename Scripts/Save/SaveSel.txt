@@ -185,7 +185,7 @@ function SlotTouch
 									else
 										if object.state == nosave_charaselect
 											if temp2 < screen.xsize
-												if temp0 > 0					
+												if temp0 > 0
 													CheckTouchRect(temp2, 62, temp0, 180)
 													if checkResult > -1
 														touch.delay = 0
@@ -267,7 +267,7 @@ function save_fadein
 	if fade.alpha == 0
 		fade.alpha = 384
 	end if
-	SetScreenFade(0, 0, 0, fade.alpha)
+	SetClassicFade(0, 0, 0, fade.alpha)
 	fade.alpha -= 16
 	if fade.alpha <= 0
 		PlayMusic(1)
@@ -418,7 +418,7 @@ end function
 function save_loadsave
 	fade.alpha += 16
 	music.volume -= 2
-	SetScreenFade(0, 0, 0, fade.alpha)
+	SetClassicFade(0, 0, 0, fade.alpha)
 	if fade.alpha >= 384
 		StopMusic()
 		options.gameMode = 1
@@ -452,8 +452,14 @@ end function
 function save_loadspecial
 	fade.alpha += 8
 	music.volume -= 2
-	SetScreenFade(color5, color7, color5, fade.alpha)
+	SetClassicFade(color7, color7, color7, fade.alpha)
 	if fade.alpha >= 384
+		fadeColor = color7
+		fadeColor <<= 16
+		temp0 = color7
+		temp0 <<= 8
+		fadeColor += temp0
+		fadeColor += color7
 		StopMusic()
 		options.gameMode = 1
 		options.saveSlot = save.highlight
@@ -491,7 +497,7 @@ end function
 function save_loadcomplete
 	fade.alpha += 16
 	music.volume -= 2
-	SetScreenFade(0, 0, 0, fade.alpha)
+	SetClassicFade(0, 0, 0, fade.alpha)
 	if fade.alpha >= 384
 		StopMusic()
 		options.gameMode = 1
@@ -525,7 +531,7 @@ end function
 function save_loadnew
 	fade.alpha += 16
 	music.volume -= 2
-	SetScreenFade(0, 0, 0, fade.alpha)
+	SetClassicFade(0, 0, 0, fade.alpha)
 	if fade.alpha >= 384
 		StopMusic()
 		options.gameMode = 1
@@ -598,11 +604,11 @@ end function
 function save_exit
 	fade.alpha += 16
 	music.volume -= 2
-	SetScreenFade(0, 0, 0, fade.alpha)
+	SetClassicFade(0, 0, 0, fade.alpha)
 	if fade.alpha >= 384
 		StopMusic()
 		stage.activeList = PRESENTATION_STAGE
-		stage.listPos = 6
+		stage.listPos = StageName[P - MAIN MENU]
 		LoadStage()
 	end if
 end function
@@ -664,7 +670,7 @@ end function
 function nosave_load
 	fade.alpha += 16
 	music.volume -= 2
-	SetScreenFade(0, 0, 0, fade.alpha)
+	SetClassicFade(0, 0, 0, fade.alpha)
 	if fade.alpha >= 384
 		StopMusic()
 		options.gameMode = 0
