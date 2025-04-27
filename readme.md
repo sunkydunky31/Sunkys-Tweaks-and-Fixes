@@ -8,7 +8,7 @@ THAT MOD WAS MADE IN 2021, BEFORE [S1F TWEAKS!](https://gamebanana.com/wips/8382
 
 ## TWEAKS // FIXES // ADITIONS
 * Added the unused sprites of Save Select
-* The Brazialian translation are now fixed
+* The Brazillian translation are now fixed
 * Golf Menu translation (PT-BR) are now fixed
 * Added new input icons to the HUD! (Seems like S3AIR, sorry Euka)
 * Save Select has new mod options
